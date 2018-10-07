@@ -10,7 +10,7 @@ app = Flask(__name__)
 app.config['DEBUG']=True
 
 def is_username_valid(username):
-    if len(username) >= 1:
+    if len(username) >= 3 and len(username) <= 20:
         if " " not in username:
             return True
         False
@@ -27,7 +27,9 @@ def is_email_valid(email):
     if len(email) == 0:
         return True
     elif len(email) >= 3 and len(email) <= 20:
-        return True
+        if "@" and "." in email:
+            return True
+        False
     False
 
 def username_error_f(username):
